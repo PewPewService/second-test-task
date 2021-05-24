@@ -27,7 +27,7 @@
         <input type="button" @click="nextPage" :disabled="pageNumber >= pageCount -1" class="nextPage">
       </div>
       <div class="buttons">
-        <input type="button" v-for="p in pageCount" :key="p" class="allPagesBtn" :value="p" @click="showPage(p-1)" :disabled="pageNumber+1 == p">
+        <input type="button" v-for="p in pageCount" :key="p" class="allPagesBtn" :value="p" @click="showPage(p-1)" :disabled="pageNumber == p-1">
       </div>
     </div>
     <div :hidden="this.existence">
