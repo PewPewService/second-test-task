@@ -161,6 +161,7 @@ input:disabled{
 }
 
 .popup{
+  z-index: -10;
   width: fit-content;
   height: 2rem;
   opacity: 0;
@@ -183,18 +184,22 @@ input:disabled{
   0% {
     opacity: 0;
     bottom: -1rem;
+    z-index: 1;
   }
   25% {
     opacity: 1;
     bottom: 3rem;
+    z-index: 1;
   }
   75% {
     opacity: 1;
     bottom: 3rem;
+    z-index: 1;
   }
   100%{
     opacity: 0;
     bottom: -1rem;
+    z-index: 1;
   }
 }
 
