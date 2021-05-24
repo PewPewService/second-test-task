@@ -158,11 +158,20 @@ tbody tr:hover{
   margin-right: 2rem;
 }
 
+.buttons input:last-child{
+  margin-right: 0;
+}
+
 .buttons:last-child input{
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 1.5rem;
 }
+
+.buttons:last-child input:last-child{
+  margin-right: 0;
+}
+
 
 #share{
   background-image: url("../assets/share.png");
