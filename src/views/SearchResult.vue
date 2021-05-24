@@ -26,6 +26,9 @@
         <input type="button" @click="share" id="share">
         <input type="button" @click="nextPage" :disabled="pageNumber >= pageCount -1" class="nextPage">
       </div>
+      <div class="buttons">
+        <input type="button" v-for="p in pageCount" :key="p" class="allPagesBtn" :value="p" @click="showPage(p-1)" :disabled="pageNumber+1 == p">
+      </div>
     </div>
     <div :hidden="this.existence">
       <h3>Не удалось найти запрашиваемый репозиторий. Пожалуйста, проверьте корректность введенных данных</h3>
@@ -52,6 +55,10 @@ export default {
         this.pageNumber--;
         this.$router.push({ name: 'Search', query: { repository: this.$route.query.repository, page: this.pageNumber }});
       },
+      showPage(pressedPage){
+        this.pageNumber=pressedPage;
+        this.$router.push({ name: 'Search', query: { repository: this.$route.query.repository, page: pressedPage }});
+      },
       share(){
         const el = document.createElement('textarea');  
         el.value = window.location.href;                                 
@@ -77,7 +84,8 @@ export default {
       pageCount(){
         let l = this.allForks.length,
           s = this.size;
-      return Math.ceil(l/s);
+          //this.pagesAmount = Math.ceil(l/s);
+      return /*this.pagesAmount;*/ Math.ceil(l/s);
       },
       paginatedData(){
         const start = this.pageNumber * this.size,
@@ -89,6 +97,7 @@ export default {
     return {
       pageNumber: 0,
       size: 10,
+      pagesAmount:0
     }
   },
   created(){
@@ -138,23 +147,34 @@ tbody tr:hover{
 .prevPage, .nextPage{
   background-image: url("../assets/pagination.png");
   background-repeat: round;
-  width: 2rem;
-  height: 2rem;
 }
 .prevPage{
   transform: rotate(180deg);
 }
+
+.buttons input{
+  width: 2rem;
+  height: 2rem;
+  margin-right: 2rem;
+}
+
+.buttons:last-child input{
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1.5rem;
+}
+
 #share{
   background-image: url("../assets/share.png");
   background-repeat: round;
-  margin-left: 2rem;
-  margin-right: 2rem;
   width:2rem;
   height:2rem;
 }
 .buttons{
   text-align: center;
+  margin-top:1rem;
 }
+
 input:disabled{
   background-color: gray;
   cursor: default;
