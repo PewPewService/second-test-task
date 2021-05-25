@@ -34,8 +34,8 @@ body{
 }
 input[type="button" i]{
   cursor: pointer;
-    background-color:azure;
-    border-radius: 10%;
-    border: 1px solid black;
+  background-color:azure;
+  border-radius: 10%;
+  border: 1px solid black;
 }
 </style>

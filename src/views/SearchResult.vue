@@ -113,7 +113,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@mixin buttons($buttonsize){
+  width: $buttonsize;
+  height: $buttonsize;
+  margin-right: $buttonsize;
+  &:last-child{
+    margin-right: 0;
+  }
+}
 
 table{
   margin-top:2rem;
@@ -122,9 +130,6 @@ table{
   background-color: rgb(235, 240, 250);
   font-size: 1rem;
   border-collapse: collapse;
-}
-table thead{
-  background-color: black;
 }
 tr{
   height: 1rem;
@@ -152,36 +157,25 @@ tbody tr:hover{
   transform: rotate(180deg);
 }
 
-.buttons input{
-  width: 2rem;
-  height: 2rem;
-  margin-right: 2rem;
-}
+.buttons{
+  text-align: center;
+  margin-top:1rem;
+  input{
+    @include buttons(2rem);
+  }
 
-.buttons input:last-child{
-  margin-right: 0;
+  &:last-child{
+    input{
+      @include buttons(1.5rem);
+    }
+  }
 }
-
-.buttons:last-child input{
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 1.5rem;
-}
-
-.buttons:last-child input:last-child{
-  margin-right: 0;
-}
-
 
 #share{
   background-image: url("../assets/share.png");
   background-repeat: round;
   width:2rem;
   height:2rem;
-}
-.buttons{
-  text-align: center;
-  margin-top:1rem;
 }
 
 input:disabled{
